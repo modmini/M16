@@ -607,6 +607,29 @@ def bot(op):
 			cl.sendText(msg.to, "Success~")
 		    else:
 			pass
+#--------------------------------------------------------
+	    elif "Copy " in msg.text:
+                nk0 = msg.text.replace("Nk ","")
+                nk1 = nk0.lstrip()
+                nk2 = nk1.replace("@","")
+                nk3 = nk2.rstrip()
+                _name = nk3
+                gs = cl.getGroup(msg.to)
+                targets = []
+                for s in gs.members:
+                    if _name in s.displayName:
+                       targets.append(s.mid)
+                if targets == []:
+                    sendMessage(msg.to,"user does not exist")
+                    pass
+                else:
+                     for target in targets:
+                          try:
+                              klist=[cl,ki,kk,kc]
+                              kicker=random.choice(klist)
+                              kicker.kickoutFromGroup(msg.to,[target])
+                              print (msg.to,[g.mid])
+                          except:
 		
 #--------------------------------------------------------
             elif "Ban @" in msg.text:
@@ -680,29 +703,7 @@ def bot(op):
                         cl.kickoutFromGroup(msg.to,[jj])
                     cl.sendText(msg.to,"Blacklist emang pantas tuk di usir")
 #--------------------------------------------------------
-             elif "Nk " in msg.text:
-		    if msg.toType == 2:		
-                       nk0 = msg.text.replace("Nk ","")
-                       nk1 = nk0.lstrip()
-                       nk2 = nk1.replace("@","")
-                       nk3 = nk2.rstrip()
-                       _name = nk3
-                       gs = cl.getGroup(msg.to)
-                       targets = []
-                       for s in gs.members:
-                           if _name in s.displayName:
-                              targets.append(s.mid)
-                       if targets == []:
-                           sendMessage(msg.to,"user does not exist")
-                           pass
-                       else:
-                           for target in targets:
-                                try:
-                                    klist=[cl,ki,kk,kc]
-                                    kicker=random.choice(klist)
-                                    kicker.kickoutFromGroup(msg.to,[target])
-                                    print (msg.to,[g.mid])
-                                except:
+           
 #--------------------------------------------------------
 #Restart_Program
 	    elif msg.text in ["Bot:restart"]:
