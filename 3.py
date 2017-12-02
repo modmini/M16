@@ -508,30 +508,7 @@ def bot(op):
                     cl.updateGroup(X)
                 else:
                     cl.sendText(msg.to,"It can't be used besides the group.")
-#--------------------------------------------------------
-            elif "Nk " in msg.text:
-		    if msg.toType == 2:		
-                       nk0 = msg.text.replace("Nk ","")
-                       nk1 = nk0.lstrip()
-                       nk2 = nk1.replace("@","")
-                       nk3 = nk2.rstrip()
-                       _name = nk3
-                       gs = cl.getGroup(msg.to)
-                       targets = []
-                       for s in gs.members:
-                           if _name in s.displayName:
-                              targets.append(s.mid)
-                       if targets == []:
-                           sendMessage(msg.to,"user does not exist")
-                           pass
-                       else:
-                           for target in targets:
-                                try:
-                                    klist=[cl,ki,kk,kc]
-                                    kicker=random.choice(klist)
-                                    kicker.kickoutFromGroup(msg.to,[target])
-                                    print (msg.to,[g.mid])
-                                except:
+
                               
 #--------------------------------------------------------
             elif "Kick: " in msg.text:
@@ -703,27 +680,29 @@ def bot(op):
                         cl.kickoutFromGroup(msg.to,[jj])
                     cl.sendText(msg.to,"Blacklist emang pantas tuk di usir")
 #--------------------------------------------------------
-#            elif "Cleanse" in msg.text:
-#                if msg.toType == 2:
-#                    print "Kick all member"
-#                    _name = msg.text.replace("Cleanse","")
-#                    gs = cl.getGroup(msg.to)
-#                    cl.sendText(msg.to,"Dadaaah~")
-#                    targets = []
-#                    for g in gs.members:
-#                        if _name in g.displayName:
-#                            targets.append(g.mid)
-#                    if targets == []:
-#                        cl.sendText(msg.to,"Not found.")
-#                    else:
-#                        for target in targets:
-#			     if target not in admin:
-#                                try:
-#                                    cl.kickoutFromGroup(msg.to,[target])
-#                                    print (msg.to,[g.mid])
-#                                except Exception as e:
-#                                    cl.sendText(msg.to,str(e))
-#			 cl.inviteIntoGroup(msg.to, targets)
+             elif "Nk " in msg.text:
+		    if msg.toType == 2:		
+                       nk0 = msg.text.replace("Nk ","")
+                       nk1 = nk0.lstrip()
+                       nk2 = nk1.replace("@","")
+                       nk3 = nk2.rstrip()
+                       _name = nk3
+                       gs = cl.getGroup(msg.to)
+                       targets = []
+                       for s in gs.members:
+                           if _name in s.displayName:
+                              targets.append(s.mid)
+                       if targets == []:
+                           sendMessage(msg.to,"user does not exist")
+                           pass
+                       else:
+                           for target in targets:
+                                try:
+                                    klist=[cl,ki,kk,kc]
+                                    kicker=random.choice(klist)
+                                    kicker.kickoutFromGroup(msg.to,[target])
+                                    print (msg.to,[g.mid])
+                                except:
 #--------------------------------------------------------
 #Restart_Program
 	    elif msg.text in ["Bot:restart"]:
