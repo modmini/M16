@@ -1963,21 +1963,24 @@ def bot(op):
     #-------------Fungsi Leave Group Finish---------------#
     
     #-------------Fungsi Tag All Start---------------#
-            elif "Bot Nong" in msg.text:
-                group = cl.getGroup(msg.to)
-                k = len(group.members)//100
-                for j in xrange(k+1):
-                    msg = Message(to=msg.to)
-                    txt = u''
-                    s=0
-                    d=[]
-                    for i in group.members[j*100 : (j+1)*100]:
-                        d.append({"S":str(s), "E" :str(s+8), "M":i.mid})
-                        s += 9
-                        txt += u'@Krampus\n'
-                    msg.text = txt
-                    msg.contentMetadata = {u'MENTION':json.dumps({"MENTIONEES":d})}
-                    cl.sendMessage(msg) 
+            elif "Tagall" == msg.text:
+		group = cl.getGroup(msg.to)
+		k = len(group.members)//100
+		for j in xrange(k+1):
+		    msg = Message(to=msg.to)
+		    txt = u''
+		    s=0
+		    d=[]
+		    for i in group.members[j*100 : (j+1)*100]:
+		        d.append({"S":str(s), "E" :str(s+8), "M":i.mid})
+		        s += 9
+		        txt += u'@Krampus\n'
+		    msg.text = txt
+		    msg.contentMetadata = {u'MENTION':json.dumps({"MENTIONEES":d})}
+		    cl.sendMessage(msg)
+		else:
+			  cl.sendText(msg.to, "มาลงวง")
+		print "@Tagall"
     #-------------Fungsi Tag All Finish---------------#
 
          #----------------Fungsi Banned Kick Target Start-----------------------#
